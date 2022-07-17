@@ -8,7 +8,8 @@
 #define ventilador 11//ventilador pin12
 #define motor 10//motor compresor de gas
 #define resistenciaDeshielo 12//resistencia de deshielo
-#define powerRele 4    // para control de optoacoplador
+#define powerRele 4 // para control de optoacoplador o transistor
+//activador de modulo rele
 
 
 //definiendo variables para temporizador
@@ -20,6 +21,7 @@ bool start=true;
 bool estabilizar= false;
 int conteo=0;//op para el switch
 int stateVentilador= 0;
+
 //definiendo variables para implementar el netodo
 //steinhart-hart 
 //variables para el censor
@@ -37,10 +39,8 @@ void setup() {
  pinMode(resistenciaDeshielo,OUTPUT);//pin 10 como salida
 //delay(10000);
 pinMode(powerRele,OUTPUT);
-//digitalWrite(powerRele,LOW);
-delay(10000);
+  delay(10000);
 digitalWrite(powerRele,HIGH);
-
   delay(1000);   
 }
 //siclo princial
@@ -124,8 +124,8 @@ void sicloEnEstabilizado(){
         setRESDESHIELO(0); //llamado a la funcion resistencia de deshielo paso por parametro 0  desactiva resistencia
         estabilizar==false;
                 
-  }
-}
+
+
 //funcion funcion para el deshielo
 void sicloDeDeshielo(){
   if(conteo == 28800){//a las 8hs
